@@ -1,4 +1,5 @@
 from fastapi import FastAPI
+from fastapi.responses import HTMLResponse
 
 app = FastAPI()
 
@@ -16,7 +17,7 @@ html = """<!DOCTYPE html>
 
 @app.get("/", tags=["Root"])
 async def root():
-    return html
+    return HTMLResponse(content=html, status_code=200)
 
 @app.get("/test")
 async def test():
