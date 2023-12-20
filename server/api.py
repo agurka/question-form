@@ -7,9 +7,11 @@ html = """<!DOCTYPE html>
 <html>
 <body>
 
-<h1>My First Heading</h1>
-
-<p>My first paragraph.</p>
+<form action="/name">
+  <label for="fname">Meno:</label>
+  <input type="text" id="fname" name="fname"><br><br>
+  <input type="submit" value="Submit">
+</form>
 
 </body>
 </html>
@@ -22,4 +24,8 @@ async def root():
 @app.get("/test")
 async def test():
     return {"message": "testing response"}
+
+@app.post("/name")
+async def handle_name(name):
+    return {"message": f"Hi {name}"}
 
